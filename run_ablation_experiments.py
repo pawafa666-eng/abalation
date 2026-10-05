@@ -88,8 +88,8 @@ def parse_args():
         default=["A", "B", "C", "D", "E", "F"],
         help="Experiments to run by id or name, e.g. --experiments B C D E F.",
     )
-    parser.add_argument("--iterations", type=int, default=60000)
-    parser.add_argument("--save-iterations", nargs="+", type=int, default=[7000, 30000, 60000])
+    parser.add_argument("--iterations", type=int, default=30000)
+    parser.add_argument("--save-iterations", nargs="+", type=int, default=[7000, 30000])
     parser.add_argument("--test-iterations", nargs="+", type=int, default=[150000])
     parser.add_argument("--random-points", type=int, default=100000)
     parser.add_argument("--python", default=sys.executable, help="Python executable used to launch train.py. Defaults to the current venv Python.")
@@ -207,42 +207,23 @@ def run_experiment(args, root, source, masks, output_root, exp, index, total):
     if model_path.exists() and any(model_path.iterdir()):
         raise FileExistsError(f"Refusing to mix runs in existing nonempty directory: {model_path}. Use a new --output-root.")
     model_path.mkdir(parents=True, exist_ok=True)
-    log_path = model_path / "train.log"
     command = build_train_command(args, root, source, masks, exp, model_path)
 
     print()
     print(f"{progress_bar(index, total)} {exp['name']}")
     print(f"Description: {exp['description']}")
     print(f"Output: {model_path}")
-    print(f"Log: {log_path}")
     print("Command:", " ".join(f'"{part}"' if " " in part else part for part in command))
     print()
 
-    with log_path.open("w", encoding="utf-8", errors="ignore") as log_file:
-        process = subprocess.Popen(
-            command,
-            cwd=root,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            bufsize=1,
-        )
-
-        assert process.stdout is not None
-        for line in process.stdout:
-            print(line, end="")
-            log_file.write(line)
-
-        return_code = process.wait()
+    return_code = subprocess.run(command, cwd=root, check=False).returncode
 
     status = "success" if return_code == 0 else f"failed:{return_code}"
     summary = summarize_metrics(exp, model_path, status)
     write_csv(model_path / "summary_metrics.csv", [summary])
 
     if return_code != 0:
-        raise RuntimeError(f"Experiment {exp['name']} failed with exit code {return_code}. See {log_path}")
+        raise RuntimeError(f"Experiment {exp['name']} failed with exit code {return_code}")
 
     return summary
 
