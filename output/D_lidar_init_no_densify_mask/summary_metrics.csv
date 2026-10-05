@@ -1,0 +1,2 @@
+experiment,description,status,final_loss,mean_loss,final_l1,mean_l1,final_opacity_loss,mean_opacity_loss,final_psnr,mean_psnr,final_ssim,mean_ssim,final_lpips,mean_lpips
+D_lidar_init_no_densify_mask,LiDAR initialization + disabled adaptive density control + mask,success,0.05511963739991188,0.08807273919632037,0.032789818942546844,0.06408105877491956,0.11104085296392441,0.1301984708805879,25.740013122558594,21.759290560881297,0.8611131310462952,0.822470470217367,0.5229711532592773,0.5235731284966072

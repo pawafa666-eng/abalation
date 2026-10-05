@@ -1,0 +1,2 @@
+experiment,description,status,final_loss,mean_loss,final_l1,mean_l1,final_opacity_loss,mean_opacity_loss,final_psnr,mean_psnr,final_ssim,mean_ssim,final_lpips,mean_lpips
+B_lidar_init_mask,LiDAR point cloud initialization + mask,success,0.055005528032779694,0.09813327155634761,0.03184216096997261,0.07552193905506283,0.04101987183094025,0.0874714733188351,25.78767204284668,20.30747797393799,0.8543919920921326,0.8157949802031119,0.5538030862808228,0.5440580770274004

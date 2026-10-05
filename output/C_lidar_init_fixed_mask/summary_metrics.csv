@@ -1,0 +1,2 @@
+experiment,description,status,final_loss,mean_loss,final_l1,mean_l1,final_opacity_loss,mean_opacity_loss,final_psnr,mean_psnr,final_ssim,mean_ssim,final_lpips,mean_lpips
+C_lidar_init_fixed_mask,LiDAR initialization + fixed Gaussian positions + mask,success,0.05222402885556221,0.11029540953412652,0.031680162996053696,0.08806973955097298,0.013111998327076435,0.04951214683273186,25.245466232299805,22.66030025078853,0.8662561178207397,0.8032775277210433,0.47277140617370605,0.45134096409380436

@@ -1,0 +1,2 @@
+experiment,description,status,final_loss,mean_loss,final_l1,mean_l1,final_opacity_loss,mean_opacity_loss,final_psnr,mean_psnr,final_ssim,mean_ssim,final_lpips,mean_lpips
+A_original_3dgs_mask,Original 3DGS-style random initialization + mask,success,0.06588183343410492,0.11562614246892432,0.04196399077773094,0.08941777788971861,0.03190743550658226,0.07236733785582085,23.88241195678711,19.772447396556537,0.8400421738624573,0.7831587750921026,0.5983709096908569,0.5616195145001014

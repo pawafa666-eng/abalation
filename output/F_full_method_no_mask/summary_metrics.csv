@@ -1,0 +1,2 @@
+experiment,description,status,final_loss,mean_loss,final_l1,mean_l1,final_opacity_loss,mean_opacity_loss,final_psnr,mean_psnr,final_ssim,mean_ssim,final_lpips,mean_lpips
+F_full_method_no_mask,Full method without mask,success,0.04035680368542671,0.14477452514320613,0.022803476080298424,0.11566708477990081,0.03988924250006676,0.0627021603199343,28.8917293548584,19.194960277537504,0.8914243578910828,0.7419308352681716,0.3908829391002655,0.5302751702666283
